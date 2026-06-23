@@ -1,0 +1,14 @@
+# Verify yente manifest — token-free, public OpenSanctions data.
+# Avoids delivery.opensanctions.com (which now needs an auth token) by pulling the
+# public catalog + per-dataset exports from data.opensanctions.org (CC-BY, HTTP 200,
+# no token). Defines a "watchlist" collection because the Verify yente client calls
+# /match/watchlist (providers/yente.py).
+catalogs:
+  - url: "https://data.opensanctions.org/datasets/latest/index.json"
+    scope: "sanctions"
+    resource_name: "entities.ftm.json"
+datasets:
+  - name: "watchlist"
+    title: "Consolidated Watchlist (OpenSanctions sanctions collection)"
+    datasets:
+      - "sanctions"
